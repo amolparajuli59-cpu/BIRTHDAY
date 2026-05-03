@@ -17,37 +17,60 @@
         }
 
         .main-heading {
-            margin-top: 40px;
-            font-size: 2.8rem;
+            margin-top: 30px;
+            font-size: 2.5rem;
             color: #ff3385;
             font-weight: 900;
             text-align: center;
-            line-height: 1.2;
         }
 
-        .green-heart {
-            font-size: 3.5rem;
-            display: block;
-            margin-top: 10px;
+        .green-heart { font-size: 3rem; display: block; }
+
+        .play-btn {
+            background-color: #ff3385;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 15px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 51, 133, 0.3);
+            font-size: 1.2rem;
         }
 
-        /* This makes the photos side-by-side and same size */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 photos per row */
-            gap: 15px; /* Space between photos */
-            width: 90%;
-            max-width: 500px;
-            margin: 30px 0;
+        .main-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 98%;
+            max-width: 900px;
+            margin: 20px 0;
+            gap: 10px;
         }
 
-        .gallery img {
-            width: 100%;
-            height: 200px; /* Forces all photos to this height */
-            object-fit: cover; /* Crops them perfectly so they don't look squeezed */
+        .side-video {
+            flex: 1;
+            height: 420px;
+            object-fit: cover;
             border-radius: 15px;
             border: 4px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            flex: 2;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid white;
         }
 
         .wish-container {
@@ -63,6 +86,11 @@
             font-weight: bold;
             line-height: 1.4;
         }
+
+        @media (max-width: 600px) {
+            .main-layout { flex-direction: column; }
+            .side-video { width: 100%; height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -72,11 +100,19 @@
         <span class="green-heart">💚</span>
     </div>
 
-    <div class="gallery">
-        <img src="1photo.jpeg" alt="luv">
-        <img src="2photo.jpeg" alt="luv">
-        <img src="3photo.png" alt="luv">
-        <img src="4photo.png" alt="luv">
+    <button class="play-btn" onclick="playMusic()">Surprise! Tap Here 🎵</button>
+
+    <div class="main-layout">
+        <video class="side-video" src="1video.mp4" autoplay muted loop playsinline></video>
+
+        <div class="photo-grid">
+            <img src="1photo.jpeg" alt="luv">
+            <img src="2photo.jpeg" alt="luv">
+            <img src="3photo.png" alt="luv">
+            <img src="4photo.png" alt="luv">
+        </div>
+
+        <video id="soundVideo" class="side-video" src="2video.mp4" loop playsinline></video>
     </div>
 
     <div class="wish-container">
@@ -84,6 +120,14 @@
             Happy Birthday wivessy luv u always and won't leave you and hope you stay by my side just the same and call you my wife Have the best birthday ever ! 💚😊💫🌺
         </div>
     </div>
+
+    <script>
+        function playMusic() {
+            var vid = document.getElementById("soundVideo");
+            vid.play();
+            document.querySelector('.play-btn').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
