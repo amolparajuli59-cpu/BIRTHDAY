@@ -8,35 +8,61 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #fff5f8;
+            background-color: #ffb6c1; /* Darker, warm pink background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Emojis Background */
+        .emoji-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            font-size: 25px;
+        }
+
+        .floating {
+            position: absolute;
+            animation: move 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes move {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
         }
 
         .main-heading {
             margin-top: 30px;
             font-size: 2.5rem;
-            color: #ff3385;
+            color: #ffffff; /* White text looks better on darker pink */
             font-weight: 900;
             text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .green-heart { font-size: 3rem; display: block; }
 
         .play-btn {
-            background-color: #ff3385;
-            color: white;
+            background-color: #ffffff;
+            color: #ff3385;
             border: none;
             padding: 12px 25px;
             border-radius: 25px;
             font-weight: bold;
             margin: 15px 0;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 51, 133, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             font-size: 1.2rem;
+            z-index: 10;
         }
 
         .main-layout {
@@ -47,6 +73,7 @@
             max-width: 900px;
             margin: 20px 0;
             gap: 10px;
+            z-index: 5;
         }
 
         .side-video {
@@ -55,7 +82,7 @@
             object-fit: cover;
             border-radius: 15px;
             border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .photo-grid {
@@ -78,13 +105,17 @@
             text-align: center;
             max-width: 85%;
             margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.2); /* Glass effect */
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
         }
 
         .sub-text {
             font-size: 1.8rem;
-            color: #ff3385;
+            color: #ffffff;
             font-weight: bold;
             line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         @media (max-width: 600px) {
@@ -95,6 +126,15 @@
 </head>
 <body>
 
+    <div class="emoji-bg">
+        <div class="floating" style="left: 10%; animation-duration: 8s;">🐳</div>
+        <div class="floating" style="left: 30%; animation-duration: 12s;">🦌</div>
+        <div class="floating" style="left: 50%; animation-duration: 10s;">🌺</div>
+        <div class="floating" style="left: 70%; animation-duration: 9s;">💚</div>
+        <div class="floating" style="left: 90%; animation-duration: 11s;">🐳</div>
+        <div class="floating" style="left: 20%; animation-duration: 14s;">🌺</div>
+    </div>
+
     <div class="main-heading">
         HAPPY BIRTHDAY WIVESSY
         <span class="green-heart">💚</span>
@@ -103,16 +143,16 @@
     <button class="play-btn" onclick="playMusic()">Surprise! Tap Here 🎵</button>
 
     <div class="main-layout">
-        <video class="side-video" src="1video.mp4" autoplay muted loop playsinline></video>
+        <video class="side-video" src="images/1video.mov" autoplay muted loop playsinline></video>
 
         <div class="photo-grid">
-            <img src="1photo.jpeg" alt="luv">
-            <img src="2photo.jpeg" alt="luv">
-            <img src="3photo.png" alt="luv">
-            <img src="4photo.png" alt="luv">
+            <img src="images/1photo.jpeg" alt="luv">
+            <img src="images/2photo.jpeg" alt="luv">
+            <img src="images/3photo.png" alt="luv">
+            <img src="images/4photo.png" alt="luv">
         </div>
 
-        <video id="soundVideo" class="side-video" src="2video.mp4" loop playsinline></video>
+        <video id="soundVideo" class="side-video" src="images/2video.mov" loop playsinline></video>
     </div>
 
     <div class="wish-container">
