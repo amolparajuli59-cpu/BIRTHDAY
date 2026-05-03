@@ -14,7 +14,7 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            animation: fadeIn 2s; /* Smooth entry effect */
+            animation: fadeIn 2s;
         }
 
         @keyframes fadeIn {
@@ -22,24 +22,36 @@
             to { opacity: 1; }
         }
 
-        header {
+        /* Thulo Title ko styling */
+        .main-heading {
             margin-top: 40px;
+            font-size: 3.5rem; /* Ekdam thulo size */
+            color: #ff3385;    /* Pink color */
+            font-weight: 900;
+            text-align: center;
+            padding: 0 20px;
+            line-height: 1.2;
+        }
+
+        .green-heart {
             font-size: 4rem;
+            display: block;
+            margin-top: 10px;
         }
 
         .gallery {
             width: 90%;
             max-width: 400px;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .gallery img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
+            border-radius: 25px;
             border: 6px solid white;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: block;
         }
 
@@ -47,24 +59,26 @@
             padding: 20px;
             text-align: center;
             max-width: 85%;
+            background: white; /* Text ko background light white banako */
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .main-text {
-            font-size: 2.2rem; /* Adjusted for better mobile fit */
+        .sub-text {
+            font-size: 1.8rem;
             color: #ff3385;
-            font-weight: bold;
-            line-height: 1.3;
-        }
-
-        footer {
-            margin: 30px 0;
-            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
-    <header>💚</header>
+    <div class="main-heading">
+        HAPPY BIRTHDAY WIVESSY
+        <span class="green-heart">💚</span>
+    </div>
 
     <div class="gallery">
         <img src="images/1photo.jpeg" alt="luv">
@@ -74,12 +88,10 @@
     </div>
 
     <div class="wish-container">
-        <div class="main-text">
+        <div class="sub-text">
             Happy Birthday wivessy luv u always and won't leave you and hope you stay by my side just the same and call you my wife Have the best birthday ever ! 💚😊💫🌺
         </div>
     </div>
-
-    <footer>💫</footer>
 
 </body>
 </html>
