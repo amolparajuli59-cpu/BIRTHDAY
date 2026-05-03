@@ -65,10 +65,10 @@
     <header>💚</header>
 
     <div class="gallery">
-        <img src="photo1.jpg" alt="Our Moment 1">
-        <img src="photo2.jpg" alt="Our Moment 2">
-        <img src="photo3.jpg" alt="Our Moment 3">
-        <img src="photo4.jpg" alt="Our Moment 4">
+        <img src="images/1photo.jpeg" alt="luv">
+        <img src="images/2photo.jpeg" alt="luv">
+        <img src="images/3photo.png" alt="luv">
+        <img src="images/4photo.png" alt="luv">
     </div>
 
     <div class="wish-container">
