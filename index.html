@@ -6,32 +6,20 @@
     <title>HAPPY BIRTHDAY WIVESSY 💚</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: #ffb6c1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            display: flex; flex-direction: column;
+            align-items: center; overflow-x: hidden;
         }
 
         .emoji-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            font-size: 25px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none; font-size: 25px;
         }
 
         .floating {
-            position: absolute;
-            animation: move 10s linear infinite;
-            opacity: 0.6;
+            position: absolute; animation: move 10s linear infinite; opacity: 0.6;
         }
 
         @keyframes move {
@@ -40,86 +28,75 @@
         }
 
         .main-heading {
-            margin-top: 30px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            font-weight: 900;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-top: 30px; font-size: 2.5rem; color: #ffffff;
+            font-weight: 900; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .green-heart { font-size: 3rem; display: block; }
-
         .play-btn {
-            background-color: #ffffff;
-            color: #ff3385;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin: 15px 0;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 1.2rem;
-            z-index: 10;
+            background-color: #ffffff; color: #ff3385; border: none;
+            padding: 12px 25px; border-radius: 25px; font-weight: bold;
+            margin: 15px 0; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.2rem; z-index: 10;
         }
 
         .main-layout {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 98%;
-            max-width: 900px;
-            margin: 20px 0;
-            gap: 10px;
-            z-index: 5;
+            display: flex; align-items: flex-start; justify-content: center;
+            width: 98%; max-width: 1100px; margin: 20px 0; gap: 15px;
         }
 
+        .video-column { flex: 1; text-align: center; }
+        
         .side-video {
-            flex: 1;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            width: 100%; height: 350px; object-fit: cover;
+            border-radius: 15px; border: 4px solid white; cursor: pointer;
         }
 
         .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            flex: 2;
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 10px; flex: 1.5;
         }
 
-        .photo-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 4px solid white;
+        .photo-item { position: relative; cursor: pointer; }
+        
+        .photo-item img {
+            width: 100%; height: 180px; object-fit: cover;
+            border-radius: 15px; border: 4px solid white; transition: 0.3s;
         }
 
-        .wish-container {
-            padding: 25px;
-            text-align: center;
-            max-width: 85%;
-            margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
+        .desc-box {
+            display: none; padding: 10px; background: white;
+            border-radius: 10px; margin-top: 5px; font-size: 0.85rem;
+            color: #444; border-left: 4px solid #ff3385; line-height: 1.3;
         }
 
-        .sub-text {
-            font-size: 1.8rem;
-            color: #ffffff;
-            font-weight: bold;
-            line-height: 1.4;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        .special-center {
+            width: 90%; max-width: 800px; margin: 40px 0;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; transition: 0.8s;
         }
 
-        @media (max-width: 600px) {
-            .main-layout { flex-direction: column; }
-            .side-video { width: 100%; height: 300px; }
+        .main-video-box {
+            width: 100%; max-width: 500px; border: 6px solid white;
+            border-radius: 20px; cursor: pointer; transition: 0.8s;
+        }
+
+        .main-video-box video { width: 100%; border-radius: 15px; display: block; }
+
+        .big-message {
+            width: 0; opacity: 0; overflow: hidden; transition: 0.8s;
+            background: white; border-radius: 15px; color: #333;
+        }
+
+        .active-center .main-video-box { width: 45%; }
+        .active-center .big-message { width: 55%; opacity: 1; padding: 20px; }
+
+        .hint { color: white; font-weight: bold; margin-bottom: 10px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% {transform: scale(1);} 50% {transform: scale(1.05);} }
+
+        @media (max-width: 768px) {
+            .main-layout { flex-direction: column; align-items: center; }
+            .active-center { flex-direction: column; }
+            .active-center .main-video-box, .active-center .big-message { width: 100%; }
         }
     </style>
 </head>
@@ -130,54 +107,82 @@
         <div class="floating" style="left: 30%; animation-duration: 12s;">🦌</div>
         <div class="floating" style="left: 50%; animation-duration: 10s;">🌺</div>
         <div class="floating" style="left: 70%; animation-duration: 9s;">💚</div>
-        <div class="floating" style="left: 90%; animation-duration: 11s;">🐳</div>
-        <div class="floating" style="left: 20%; animation-duration: 14s;">🌺</div>
+        <div class="floating" style="left: 20%; animation-duration: 14s;">🐳</div>
     </div>
 
-    <div class="main-heading">
-        HAPPY BIRTHDAY WIVESSY
-        <span class="green-heart">💚</span>
-    </div>
+    <div class="main-heading">HAPPY BIRTHDAY WIVESSY <span style="display:block; font-size:3rem;">💚</span></div>
 
     <button class="play-btn" onclick="playMyMusic()">Surprise! Tap Here 🎵</button>
-    
     <audio id="bgMusic" src="music.mp3" loop></audio>
 
     <div class="main-layout">
-        <video class="side-video" src="1video.mp4" autoplay muted loop playsinline></video>
+        <div class="video-column">
+            <video class="side-video" src="1video.mp4" autoplay muted loop onclick="showDesc('v1')"></video>
+            <div id="v1" class="desc-box">THE PURPOSE OF THIS VIDEO IS TO SHOW THE DRESS NOTHING ABOUT ANYTHING OTHER THO NOTHING IS SHE IS LOOKING GOOD !!!</div>
+        </div>
 
         <div class="photo-grid">
-            <img src="1photo.jpeg" alt="luv">
-            <img src="2photo.jpeg" alt="luv">
-            <img src="3photo.PNG" alt="luv">
-            <img src="4photo.PNG" alt="luv">
+            <div class="photo-item" onclick="showDesc('p1')">
+                <img src="1photo.jpeg" alt="luv">
+                <div id="p1" class="desc-box">SHE IS A MENTAL ILL ABOUT STUDING AS A ME I CANNOT EXPRESS IN THIS FOTO BUT SHE LOOKS GOOD THO SHE IS GOOD CANT BE MORE BEAUTIFUL THAN ME !!!</div>
+            </div>
+            <div class="photo-item" onclick="showDesc('p2')">
+                <img src="2photo.jpeg" alt="luv">
+                <div id="p2" class="desc-box">THIS IS ANOTHER ILLING THING WHERE I GOT TO CLICK THE SCREEN SHOT THE FOTO OF HER FROM THE VIDEO BUT THAT SCREEN SHOT FOTO TRUN OUT TO BE BEAUTIFUL , AAGATHOKAKOLOGICAL !!!</div>
+            </div>
+            <div class="photo-item" onclick="showDesc('p3')">
+                <img src="3photo.PNG" alt="luv">
+                <div id="p3" class="desc-box">THE IS THE INNOCENT SIDE OF THIS GIRL WIVESSY BUT FOR NOW IS SHE ALWAYS HATE ME THO IS SHE HATE WE HERE ABOUT TALKING ABOUT THAT FOTO SHE WAS PRETTY AND BEAUTY WITH LOVELY !!!</div>
+            </div>
+            <div class="photo-item" onclick="showDesc('p4')">
+                <img src="4photo.PNG" alt="luv">
+                <div id="p4" class="desc-box">THIS ONE COMEDY SAME FOR NOW SHE TEASE ME LIKE WISE FROM TODAY TO 13 YEARS AGO SHE USED TO TEASE ME SAME BUT IN HER IMAGINATION WORLD WHERE I WAS THE KING AND SHE WAS THE QWEEN !!!</div>
+            </div>
         </div>
 
-        <video class="side-video" src="2video.mp4" autoplay muted loop playsinline></video>
+        <div class="video-column">
+            <video class="side-video" src="2video.mp4" autoplay muted loop onclick="showDesc('v2')"></video>
+            <div id="v2" class="desc-box">ONE OF THE FUNNY ONE IS THIS ONE WHERE IS CATCHING THE BOX THERE IN HER HAND WHERE I CAN FIT TOOO YOOOOOOOOO SHE IS LOOKING BOX WITH NOTHING BUT SOME BEAUTY THAT IT FOR IT !!!</div>
+        </div>
     </div>
 
-    <div class="wish-container">
-        <div class="sub-text">
-            Happy Birthday wivessy i luv u always and won't leave you and hope you stay by my side just the same and call you my wife Have the best birthday ever ! 💚😊💫🌺
+    <p class="hint">Click this video for the best part! ✨</p>
+    <div class="special-center" id="specialBox">
+        <div class="main-video-box" onclick="toggleSpecial()">
+            <video id="vid3" src="3video.mp4" autoplay muted loop playsinline></video>
         </div>
+        <div class="big-message">
+            <h2 style="color: #ff3385; margin-top: 0;">Our Forever Start ❤️</h2>
+            <p style="font-style: italic; font-weight: bold; color: #555;">
+                LOVELY ONE THIS IS NOT ABOUT VIDEO IT IS ABOUT DAY WHERE WE FIRST TALK THIS IS NOT THE FIRST DAY BUT IT IS THE FIRST DAY WHICH START EVERYTHING AND THAT MAKES ME WRITTING THIS RN IT SHOULD BE FOREVER !!!
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 50px; text-align: center; padding: 20px; background: rgba(255,255,255,0.2); border-radius: 20px; width: 80%;">
+        <p style="font-size: 1.5rem; color: white; font-weight: bold;">
+            Happy Birthday wivessy i luv u always and won't leave you and hope you stay by my side just the same and call you my wife Have the best birthday ever ! 💚😊💫🌺
+        </p>
     </div>
 
     <script>
         function playMyMusic() {
-            // १. अडियो फाइल बजाउने
-            var music = document.getElementById("bgMusic");
-            music.play();
-
-            // २. बटनलाई गायब बनाउने
+            document.getElementById("bgMusic").play();
             document.querySelector('.play-btn').style.display = 'none';
-            
-            // ३. भिडियोहरूलाई म्युट नै राख्ने (यसले भिडियोको आवाज आउन दिँदैन)
-            var videos = document.querySelectorAll('video');
-            videos.forEach(function(vid) {
-                vid.muted = true;
-            });
+        }
+        function showDesc(id) {
+            var target = document.getElementById(id);
+            if (target.style.display === "block") {
+                target.style.display = "none";
+            } else {
+                target.style.display = "block";
+            }
+        }
+        function toggleSpecial() {
+            document.getElementById('specialBox').classList.toggle('active-center');
+            var v3 = document.getElementById('vid3');
+            v3.muted = !v3.muted; 
         }
     </script>
-
 </body>
 </html>
