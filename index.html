@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffb6c1; /* Darker, warm pink background */
+            background-color: #ffb6c1; /* Warm Pink Background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
@@ -17,7 +17,77 @@
             position: relative;
         }
 
-        /* Floating Emojis Background */
+        /* Zoom In-Out Animation for Heading */
+        .main-heading {
+            margin-top: 30px;
+            font-size: 3.5rem;
+            color: #ffffff;
+            font-weight: 900;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: zoomInOut 2s ease-in-out infinite; /* Zoom effect */
+        }
+
+        @keyframes zoomInOut {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .green-heart { font-size: 4rem; display: block; margin-top: 10px; }
+
+        /* Surprise Button */
+        .play-btn {
+            background-color: #ffffff;
+            color: #ff3385;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 20px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.3rem;
+            z-index: 10;
+        }
+
+        /* Layout: Video | Photos | Video */
+        .main-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 98%;
+            max-width: 1000px;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .side-video {
+            flex: 1;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            flex: 2;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Floating Emojis */
         .emoji-bg {
             position: fixed;
             top: 0;
@@ -26,113 +96,54 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
-            font-size: 25px;
         }
 
         .floating {
             position: absolute;
-            animation: move 10s linear infinite;
-            opacity: 0.6;
+            font-size: 30px;
+            animation: floatUp 12s linear infinite;
+            opacity: 0.7;
         }
 
-        @keyframes move {
-            0% { transform: translateY(100vh) rotate(0deg); }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); }
             100% { transform: translateY(-10vh) rotate(360deg); }
         }
 
-        .main-heading {
-            margin-top: 30px;
-            font-size: 2.5rem;
-            color: #ffffff; /* White text looks better on darker pink */
-            font-weight: 900;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .green-heart { font-size: 3rem; display: block; }
-
-        .play-btn {
-            background-color: #ffffff;
-            color: #ff3385;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin: 15px 0;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 1.2rem;
-            z-index: 10;
-        }
-
-        .main-layout {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 98%;
-            max-width: 900px;
-            margin: 20px 0;
-            gap: 10px;
-            z-index: 5;
-        }
-
-        .side-video {
-            flex: 1;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            flex: 2;
-        }
-
-        .photo-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 4px solid white;
-        }
-
         .wish-container {
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             max-width: 85%;
-            margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.2); /* Glass effect */
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            backdrop-filter: blur(8px);
         }
 
         .sub-text {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #ffffff;
             font-weight: bold;
-            line-height: 1.4;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .main-layout { flex-direction: column; }
             .side-video { width: 100%; height: 300px; }
+            .main-heading { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="emoji-bg">
-        <div class="floating" style="left: 10%; animation-duration: 8s;">🐳</div>
-        <div class="floating" style="left: 30%; animation-duration: 12s;">🦌</div>
-        <div class="floating" style="left: 50%; animation-duration: 10s;">🌺</div>
-        <div class="floating" style="left: 70%; animation-duration: 9s;">💚</div>
-        <div class="floating" style="left: 90%; animation-duration: 11s;">🐳</div>
-        <div class="floating" style="left: 20%; animation-duration: 14s;">🌺</div>
+        <div class="floating" style="left: 5%; animation-duration: 9s;">🐳</div>
+        <div class="floating" style="left: 25%; animation-duration: 13s;">🦌</div>
+        <div class="floating" style="left: 45%; animation-duration: 11s;">🌺</div>
+        <div class="floating" style="left: 65%; animation-duration: 10s;">💚</div>
+        <div class="floating" style="left: 85%; animation-duration: 14s;">🐳</div>
+        <div class="floating" style="left: 15%; animation-duration: 12s;">🌺</div>
     </div>
 
     <div class="main-heading">
@@ -140,19 +151,21 @@
         <span class="green-heart">💚</span>
     </div>
 
-    <button class="play-btn" onclick="playMusic()">Surprise! Tap Here 🎵</button>
+    <button class="play-btn" onclick="playAll()">Surprise! Tap for Music 🎵</button>
+
+    <audio id="bgMusic" src="music.mp3" loop></audio>
 
     <div class="main-layout">
-        <video class="side-video" src="1video.mp4" autoplay muted loop playsinline></video>
+        <video id="v1" class="side-video" src="1video.mov" autoplay muted loop playsinline></video>
 
         <div class="photo-grid">
             <img src="1photo.jpeg" alt="luv">
             <img src="2photo.jpeg" alt="luv">
-            <img src="3photo.PNG" alt="luv">
-            <img src="4photo.PNG" alt="luv">
+            <img src="3photo.png" alt="luv">
+            <img src="4photo.png" alt="luv">
         </div>
 
-        <video id="soundVideo" class="side-video" src="2video.mp4" loop playsinline></video>
+        <video id="v2" class="side-video" src="2video.mov" autoplay muted loop playsinline></video>
     </div>
 
     <div class="wish-container">
@@ -162,9 +175,12 @@
     </div>
 
     <script>
-        function playMusic() {
-            var vid = document.getElementById("soundVideo");
-            vid.play();
+        function playAll() {
+            // Play the MP3 song
+            var music = document.getElementById("bgMusic");
+            music.play();
+            
+            // Hide the button
             document.querySelector('.play-btn').style.display = 'none';
         }
     </script>
